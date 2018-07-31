@@ -1,6 +1,24 @@
 var $container = $(".msnry");
 var $loading_msg = $("#msnry__loading");
 var allow_gallery_open = false;
+var active_gallery = "";
+
+
+function switchToMale() {
+    if (active_gallery == "male") return;
+
+    active_gallery = "male";
+    $("#folder--female").css("display", "none");
+    $("#folder--male").css("display", "block");
+};
+
+function switchToFemale() {
+    if (active_gallery == "female") return;
+
+    active_gallery = "male";
+    $("#folder--male").css("display", "none");
+    $("#folder--female").css("display", "block");
+};
 
 var initPhotoSwipeFromDOM = function(gallerySelector) {
 
@@ -70,7 +88,7 @@ var initPhotoSwipeFromDOM = function(gallerySelector) {
 
         // find root element of slide
         var clickedListItem = closest(eTarget, function(el) {
-            return (el.tagName && el.tagName.toUpperCase() === 'DIV');
+            return (el.tagName && el.tagName.toUpperCase() === 'FIGURE');
         });
 
         if(!clickedListItem) {
